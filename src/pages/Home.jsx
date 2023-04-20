@@ -11,6 +11,7 @@ import { fetchTags, fetchPosts } from '../redux/slices/posts';
 
 export const Home = () => {
   const dispatch = useDispatch();
+  const userData = useSelector(state => state.auth.data);
   const { posts, tags } = useSelector(state => state.posts);
 
   const isPostsLoading = posts.status === 'loading';
@@ -38,13 +39,13 @@ export const Home = () => {
             <Post
               id={obj._id}
               title={obj.title}
-              imageUrl={obj.imageUrl}
+              imageUrl={`http://localhost:4444/${obj.imageUrl}`}
               user={obj.user}
               createdAt={obj.createdAt}
               viewsCount={obj.viewsCount}
               commentsCount={3}
               tags={[obj.tags]}
-              isEditable
+              isEditable={userData?._id === obj.user._id}
             />
           ),
         )}

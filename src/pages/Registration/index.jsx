@@ -10,8 +10,7 @@ import Avatar from '@mui/material/Avatar';
 import { useForm } from 'react-hook-form';
 
 import styles from './Login.module.scss';
-import { fetchAuth, selectIsAuth } from '../../redux/slices/auth';
-import { fetchRegister } from '../../redux/slices/auth.js'; 
+import { fetchAuth, selectIsAuth, fetchRegister } from '../../redux/slices/auth';
 
 export const Registration = () => {
   const isAuth = useSelector(selectIsAuth);
@@ -43,7 +42,7 @@ export const Registration = () => {
 
   if (isAuth) {
     return <Navigate to="/" />;
-  }
+  };
 
   return (
     <Paper classes={{ root: styles.root }}>
